@@ -3,20 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RequestsApp.MainPage">
     <ScrollView>
-        <VerticalStackLayout>
+        <VerticalStackLayout
+            Padding="20">
+            
             <Button 
-            x:Name="btnGoForm"
-            Text="Ir al form" 
-            Clicked="btnGoForm_Clicked" />
+                x:Name="btnGoForm"
+                Text="Registrar nueva persona"
+                HorizontalOptions="Center"
+                Clicked="btnGoForm_Clicked" 
+                Margin="0, 0, 0, 15"/>
             <CollectionView ItemsSource="{Binding People}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout>
-                            <Label Text="{Binding nombre_completo}" TextColor="White"/>
+                            <Label Text="{Binding nombre_completo}"/>
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

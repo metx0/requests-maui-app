@@ -3,10 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RequestsApp.FormPage"
              Title="FormPage">
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="20">
+        <Button 
+            x:Name="btnGoHome"
+            Text="Regresar al inicio"
+            HorizontalOptions="Center"
+            Clicked="btnGoHome_Clicked" 
+            Margin="0, 0, 0, 15"/>
+        <!-- Fields: id, nombre, apellido, sexo, fh_nac and id_rol -->
         <Label 
-            Text="Vista para agregar personas a la BD"
+            Text="Agrega una nueva persona"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            HorizontalOptions="Center" 
+            FontSize="15"
+            FontAttributes="Bold" />
     </VerticalStackLayout>
 </ContentPage>
