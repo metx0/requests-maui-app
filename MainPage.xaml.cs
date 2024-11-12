@@ -10,7 +10,7 @@ namespace RequestsApp
         private ObservableCollection<PersonaModel> _people;
 
         // Property for the field above
-        private ObservableCollection<PersonaModel> People
+        public ObservableCollection<PersonaModel> People
         {
             get => _people;
             set
@@ -28,14 +28,19 @@ namespace RequestsApp
             var people = JsonSerializer
                 .Deserialize<ObservableCollection<PersonaModel>>(response);
 
-            if (people != null)
-                People = people;
+            People = people;
         }
 
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = this;
+            GetData();
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new FormPage());
         }
     }
-
 }
