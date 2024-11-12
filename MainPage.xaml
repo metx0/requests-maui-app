@@ -2,21 +2,21 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RequestsApp.MainPage">
-    
-        <Button 
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button 
+            x:Name="btnGoForm"
             Text="Ir al form" 
-            Clicked="Button_Clicked"/>
-        <ScrollView>
+            Clicked="btnGoForm_Clicked" />
             <CollectionView ItemsSource="{Binding People}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <HorizontalStackLayout>
-                            <Label Text="{Binding nombre}" TextColor="White"/>
-                            <Label Text="{Binding apellido}" TextColor="White" />
+                            <Label Text="{Binding nombre_completo}" TextColor="White"/>
                         </HorizontalStackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
-    
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

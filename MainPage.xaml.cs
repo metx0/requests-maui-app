@@ -28,7 +28,8 @@ namespace RequestsApp
             var people = JsonSerializer
                 .Deserialize<ObservableCollection<PersonaModel>>(response);
 
-            People = people;
+            if (people != null)
+                People = people;
         }
 
         public MainPage()
@@ -37,8 +38,7 @@ namespace RequestsApp
             BindingContext = this;
             GetData();
         }
-
-        private async void Button_Clicked(object sender, EventArgs e)
+        private async void btnGoForm_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FormPage());
         }

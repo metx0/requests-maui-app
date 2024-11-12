@@ -63,12 +63,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="FormPage.xaml.cs">
-	    <DependentUpon>FormPage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="FormPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

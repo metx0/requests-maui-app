@@ -9,5 +9,10 @@
         public string sexo { get; set; }
         public string fh_nac { get; set; }
         public string id_rol { get; set; }
+
+        public string nombre_completo
+        {
+            get => $"{nombre}  {apellido}";
+        }
     }
 }
