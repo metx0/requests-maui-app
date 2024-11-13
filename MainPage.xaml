@@ -5,7 +5,6 @@
     <ScrollView>
         <VerticalStackLayout
             Padding="20">
-            
             <Button 
                 x:Name="btnGoForm"
                 Text="Registrar nueva persona"
