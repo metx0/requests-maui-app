@@ -10,13 +10,113 @@
             Text="Regresar al inicio"
             HorizontalOptions="Center"
             Clicked="btnGoHome_Clicked" 
-            Margin="0, 0, 0, 15"/>
-        <!-- Fields: id, nombre, apellido, sexo, fh_nac and id_rol -->
+            Margin="0, 0, 0, 40"/>
         <Label 
             Text="Agrega una nueva persona"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" 
-            FontSize="15"
-            FontAttributes="Bold" />
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            FontSize="20"
+            Margin="0, 0, 0, 20"/>
+        
+        <!-- Fields: id, nombre, apellido, sexo, fh_nac and rol (we have to map it later to a number) -->
+        <!-- Form -->
+        <VerticalStackLayout>
+            <Grid
+                ColumnDefinitions="Auto, 350"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+                RowSpacing="20"
+                HorizontalOptions="Center"> 
+                
+                <!-- Nombre -->
+                <Label 
+                    Text="Nombre"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="End"
+                    FontSize="15"
+                    Margin="0, 0, 15, 0"/>
+                <Entry
+                    x:Name="txtNombre"
+                    Placeholder="Tu nombre"
+                    Grid.Column="1"/>
+                
+                <!-- Apellido -->
+                <Label 
+                    Text="Apellidos"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="End"
+                    FontSize="15"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="0, 0, 15, 0"/>
+                <Entry
+                    x:Name="txtApellido"
+                    Placeholder="Tus apellidos"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    /> 
+                
+                <!-- Sexo -->
+                <Label 
+                    Text="Sexo"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="End"
+                    FontSize="15"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Margin="0, 0, 15, 0"/>
+                <!-- Selector for sex -->
+                <Picker
+                    x:Name="pickSexo"
+                    Grid.Row="2"
+                    Grid.Column="1">
+                    <Picker.Items>
+                        <x:String>Hombre</x:String>
+                        <x:String>Mujer</x:String>
+                        <x:String>Otro</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <!-- Fecha de nacimiento -->
+                <Label 
+                    Text="Fecha de nacimiento"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="End"
+                    FontSize="15"
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Margin="0, 0, 15, 0"/>
+                <!-- Selector for the date -->
+                <DatePicker
+                    x:Name="pickFhNac"
+                    MinimumDate="1900-01-01"
+                    MaximumDate="2024-12-31"
+                    HorizontalOptions="Start" 
+                    Grid.Row="3"
+                    Grid.Column="1"/>
+
+                <!-- Rol -->
+                <Label 
+                    Text="Rol"
+                    VerticalOptions="Center"
+                    HorizontalTextAlignment="End"
+                    FontSize="15"
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Margin="0, 0, 15, 0"/>
+                <!-- Selector for rol (alumno, profesor, administrativo, otro) -->
+                <Picker
+                    x:Name="pickRol"
+                    Grid.Row="4"
+                    Grid.Column="1">
+                    <Picker.Items>
+                        <x:String>Alumno</x:String>
+                        <x:String>Profesor</x:String>
+                        <x:String>Administrativo</x:String>
+                        <x:String>Otro</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Grid>
+        </VerticalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>
