@@ -7,6 +7,7 @@ namespace RequestsApp
     public partial class MainPage : ContentPage, INotifyPropertyChanged
     {
         private readonly HttpClient _httpClient = new HttpClient();
+        private readonly string personaEndpoint = "https://fi.jcaguilar.dev/v1/escuela/persona";
         private ObservableCollection<PersonaModel> _people;
 
         // Property for the field above
@@ -23,7 +24,7 @@ namespace RequestsApp
         public async void GetData()
         {
             var response = await _httpClient
-                .GetStringAsync("https://fi.jcaguilar.dev/v1/escuela/persona");
+                .GetStringAsync(personaEndpoint);
             // Populate the collection with PersonaModel objects
             var people = JsonSerializer
                 .Deserialize<ObservableCollection<PersonaModel>>(response);

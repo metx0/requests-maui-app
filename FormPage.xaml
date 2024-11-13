@@ -118,5 +118,12 @@
             </Grid>
         </VerticalStackLayout>
 
+        <Button 
+            x:Name="btnSubmit"
+            Text="Enviar"
+            HorizontalOptions="Center"
+            Clicked="btnSubmit_Clicked" 
+            Margin="0, 40, 0, 0"/>
+
     </VerticalStackLayout>
 </ContentPage>
