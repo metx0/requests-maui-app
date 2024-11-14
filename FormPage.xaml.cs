@@ -1,6 +1,7 @@
 using System.Text;
 using System.Text.Json;
 using System.Diagnostics;
+using CommunityToolkit.Maui.Alerts;
 
 namespace RequestsApp;
 
@@ -43,18 +44,38 @@ public partial class FormPage : ContentPage
         return sexos[sexo];
     }
 
+    private async void showToast(string message)
+    {
+        var toast = Toast.Make(
+                message,
+                CommunityToolkit.Maui.Core.ToastDuration.Short, 5
+            );
+
+        await toast.Show();
+    }
+
     private async void btnSubmit_Clicked(object sender, EventArgs e)
     {
-        // Validate that all fields are filled
         string nombre = txtNombre.Text;
         string apellido = txtApellido.Text;
-        string sexo = mapSex(pickSexo.SelectedItem.ToString());
-
+        string sexSelection = pickSexo.SelectedItem.ToString();
         DateTime selectedDate = pickFhNac.Date;
+        string rol = pickRol.SelectedItem.ToString();
+
+        if (string.IsNullOrEmpty(nombre) ||
+            string.IsNullOrEmpty(apellido) ||
+            sexSelection == null ||
+            pickRol.SelectedItem == null)
+        {
+            // Show a message error
+            showToast("Por favor, completa todos los campos");
+            return;
+        }
+
+        string sexo = mapSex(sexSelection);
         string fh_nac = selectedDate.ToString("yyyy-MM-dd");
         Debug.WriteLine("fh_nac: " + fh_nac);
 
-        string rol = pickRol.SelectedItem.ToString();
         int id_rol = mapRol(rol);
         Debug.WriteLine("Id_rol: " + id_rol);
 
@@ -62,6 +83,16 @@ public partial class FormPage : ContentPage
         PersonaModel persona = new PersonaModel(nombre, apellido, sexo, fh_nac, id_rol);
 
         bool result = await sendData(persona);
+
+        if (result)
+        {
+            showToast("Persona añadida exitosamente");
+        }
+        else 
+        {
+            showToast("Hubo un error al añadir a la persona");
+        }
+
         Debug.WriteLine(result);
     }
 
@@ -69,7 +100,7 @@ public partial class FormPage : ContentPage
     // Returns a bool wrapped in a Task (or something like that)
     private async Task<bool> sendData(PersonaModel persona)
     {
-        // Test with a PersonaModel object
+        // Test with a PersonaModel object (we have to delete the parameter)
         // PersonaModel persona = new PersonaModel("Miguel", "Alejandro", "h", "2024-11-13", 1);
 
         string jsonData = JsonSerializer.Serialize(persona);
@@ -87,7 +118,6 @@ public partial class FormPage : ContentPage
         }
         catch (System.Exception ex)
         {
-            Console.WriteLine(ex);
             Debug.WriteLine(ex);
         }
 
